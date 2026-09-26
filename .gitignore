@@ -11,6 +11,9 @@
 *.sln.docstates
 *.env
 
+# Azure Functions local settings (ignore per-project local.settings.json files)
+**/local.settings.json
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -394,6 +397,27 @@ MSBuild_Logs/
 
 # Visual Studio History (VSHistory) files
 .vshistory/
+
+# Local/dev artifacts and emulator files
+local.settings.json
+__blobstorage__/
+__azurite_db_blob__*.json
+__azurite_db_queue__*.json
+__azurite_db_table__*.json
+__azurite_db_blob_extent__.json
+__azurite_db_queue_extent__.json
+
+
+# Azure Functions build artifacts
+bin/
+obj/
+
+# dotenv and environment files
+.env
+
+# macOS
+.DS_Store
+
 
 # BeatPulse healthcheck temp database
 healthchecksdb

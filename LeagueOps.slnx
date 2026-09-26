@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LeagueOps.Core/LeagueOps.Core.csproj" />
+    <Project Path="src/LeagueOps.Discord/LeagueOps.Discord.csproj" />
+    <Project Path="src/LeagueOps.Functions.YahooAuth/LeagueOps.Functions.csproj" />
+    
+    <Project Path="tests/LeagueOps.Tests/LeagueOps.Tests.csproj" />
+    <Project Path="src/LeagueOps.Yahoo/LeagueOps.Yahoo.csproj" />
+  </Folder>
+</Solution>

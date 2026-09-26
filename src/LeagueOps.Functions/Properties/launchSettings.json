@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "LeagueOps_Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7201",
+      "launchBrowser": false
+    }
+  }
+}

@@ -1,0 +1,58 @@
+dotnet new sln -n LeagueOps
+mkdir -p src tests
+
+dotnet new classlib -n LeagueOps.Core -o src/LeagueOps.Core
+dotnet new classlib -n LeagueOps.Yahoo -o src/LeagueOps.Yahoo
+dotnet new classlib -n LeagueOps.Discord -o src/LeagueOps.Discord
+dotnet new xunit -n LeagueOps.Tests -o tests/LeagueOps.Tests
+
+mkdir -p src/LeagueOps.Functions
+cd src/LeagueOps.Functions
+func init --worker-runtime dotnet-isolated
+
+dotnet sln LeagueOps.slnx add src/LeagueOps.Core/LeagueOps.Core.csproj
+dotnet sln LeagueOps.slnx add src/LeagueOps.Yahoo/LeagueOps.Yahoo.csproj
+dotnet sln LeagueOps.slnx add src/LeagueOps.Discord/LeagueOps.Discord.csproj
+dotnet sln LeagueOps.slnx add src/LeagueOps.Functions/LeagueOps.Functions.csproj
+dotnet sln LeagueOps.slnx add tests/LeagueOps.Tests/LeagueOps.Tests.csproj
+
+Functions
+   ↓
+Core
+ ↑  ↑
+Yahoo Discord
+
+dotnet add src/LeagueOps.Functions reference src/LeagueOps.Core
+dotnet add src/LeagueOps.Functions reference src/LeagueOps.Yahoo
+dotnet add src/LeagueOps.Functions reference src/LeagueOps.Discord
+
+dotnet add src/LeagueOps.Yahoo reference src/LeagueOps.Core
+dotnet add src/LeagueOps.Discord reference src/LeagueOps.Core
+
+dotnet add tests/LeagueOps.Tests reference src/LeagueOps.Core
+dotnet add tests/LeagueOps.Tests reference src/LeagueOps.Yahoo
+dotnet add tests/LeagueOps.Tests reference src/LeagueOps.Discord
+
+
+
+LeagueOps.Core
+    WeeklyWinner
+    League
+    Team
+    Matchup
+    IWeeklyLeagueService
+
+LeagueOps.Yahoo
+    YahooFantasyClient
+    YahooOAuthClient
+    YahooWeeklyLeagueService
+
+LeagueOps.Discord
+    DiscordWebhookClient
+
+LeagueOps.Functions
+    WeeklyLeagueProcessor
+    OAuthCallback
+
+
+https://leagueops-brian-001.azurewebsites.net/api/yahoo/callback

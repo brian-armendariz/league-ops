@@ -26,6 +26,43 @@ Purpose: provide a concise, side-by-side comparison to help decide whether to co
   - Need `mypy`/type hints for similar safety.
   - Tooling: VS Code Python extension, `pytest`, virtualenv/Poetry.
 
+## Go
+
+- **Project Fit**
+  - Good for small, fast services and CLIs; excellent for networked services and simple concurrency.
+  - Useful if you want a single static binary for deployment or require low-latency, minimal-runtime services.
+
+- **Development Experience**
+  - Statically typed with fast compilation and a small standard library; simple language surface area.
+  - Tooling: VS Code has Go extension (`gopls`), `go test`, `go mod` for dependency management.
+
+- **Libraries & Ecosystem**
+  - Strong standard library for HTTP and concurrency; good HTTP clients and smaller ecosystem for niche APIs compared to Python.
+  - Discord: community clients exist (e.g., `bwmarrin/discordgo`), but fewer high-level bots than Python.
+  - Yahoo Fantasy: unlikely to find a mature Go SDK; you'll implement OAuth + REST with `net/http` or `http.Client` wrappers.
+
+- **Azure Functions**
+  - No first-class Go worker; use Azure Functions custom handlers or deploy Go as containerized HTTP endpoints.
+  - For serverless, Go often fits better on platforms that support native Go runtimes (e.g., Cloud Run, AWS Lambda with Go runtime).
+
+- **Performance & Scale**
+  - Excellent raw performance, small memory footprint, fast startup — good for low-latency endpoints.
+
+- **Concurrency**
+  - Goroutines and channels provide ergonomic concurrency; well-suited for concurrent I/O workloads.
+
+- **Packaging & Deployment**
+  - Produces a single static binary (if desired) — simplifies deployment and reduces runtime dependencies.
+
+- **Testing & CI**
+  - Built-in `go test`, fast toolchain; easy to integrate into CI pipelines.
+
+- **Team & Maintainability**
+  - Simpler language but fewer high-level libraries for web APIs compared to Python; great for small, focused services.
+
+- **Recommendations**
+  - Consider Go if you need extremely fast, low-footprint services, prefer static binaries, or plan to deploy in containers or platforms that favor Go. It is less convenient if you expect heavy use of Python-specific libraries or the .NET ecosystem.
+
 ## Libraries & Ecosystem
 
 - **Discord**: Both have mature options. C# has `Discord.Net`/`DSharpPlus`; Python has `discord.py` and related libs (broader community). Python may be easier for Discord bot features.
